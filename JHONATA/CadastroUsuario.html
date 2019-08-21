@@ -3,62 +3,78 @@
 <head>
   <title>Minha Página</title>
   <meta charset="utf-8">
-
+  <link rel="stylesheet" href="img/enc-motoc.jpg">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-  <link rel="stylesheet" type="text/css" href="estilo.css">
 
-</head>
+  </head>
 
 <body>
+  
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-    <ul class="nav justify-content-end">
-        <li class="nav-item">
-          <a class="nav-link active" href="#">Início</a>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="index.html">Home<span class="sr-only">(current)</span></a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Cadastro</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Dropdown
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#">Another action</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </div>
         </li>
         <li class="nav-item">
           <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
         </li>
       </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>
+    </div>
+  </nav>
 
   <div class="container">
 
-    <a href="index.html">Início</a>
-
     <h1>Cadastro de Membros</h1>
-    <form method="POST">
+    <form id="form" method="POST">
 
       <div class="form-group">
         <label for="login">Login</label>
-        <input type="text" class="form-control" nome="login" placeholder="Digite seu login">
+        <input type="text" class="form-control" name="login" placeholder="Digite seu login">
       </div>
 
       <div class="form-group">
         <label for="login">E-mail</label>
-        <input type="text" class="form-control" nome="email" placeholder="Digite seu E-mail">
+        <input type="text" class="form-control" name="email" placeholder="Digite seu E-mail">
       </div>
 
       <div class="form-group">
         <label for="senha">Senha</label>
-        <input type="password" class="form-control" nome="senha" placeholder="Digite sua Senha">
+        <input type="password" class="form-control" name="senha" placeholder="Digite sua Senha">
       </div>
 
       <div class="form-group">
-          <label for="data">Data</label>
-          <input id="dataDeNascimento" type="text" class="form-control date" name="data" placeholder="dd/mm/yyyy">  
-      
-        </div>
-<div class="form-group form-check">
+        <label for="data">Data</label>
+        <input id="dataDeNascimento" type="text" class="form-control date" name="data" placeholder="dd/mm/yyyy">
+
+      </div>
+      <div class="form-group form-check">
         <input type="checkbox" class="from-check-input" id="lembrar">
         <label class="form-check-label" for="examplecheck">lembrar</label>
-  </div>
+      </div>
 
 
       <input type="submit" value="Salva" class="btn btn-danger" />
@@ -77,13 +93,31 @@
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script>
 
-    <script src="js/jquery.mask.js"></script>
-    <script>
-    $(document).ready(function(){
-        $('.date').mask('00/00/0000');
+  <script src="js/jquery.mask.js"></script>
+  <script src="js/jquery.validate.js"></script>
+  <script>
+    $(document).ready(function () {
+      $('.date').mask('00/00/0000');
     })
-    
-    </script>
+
+    $("#form").validate(
+      {
+
+        rules: {
+          login: "required",
+          email: "required",
+          senha: "required"
+        },
+        messages: {
+          login: "Digite o login corretamente!",
+          email: "digite seu e-mail corretamente!",
+          senha: "digíte sua senha"
+        }
+      }
+
+    );
+
+  </script>
 </body>
 
 </html>
